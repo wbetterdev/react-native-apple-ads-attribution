@@ -1,9 +1,8 @@
 # react-native-apple-ads-attribution
 
-Fetches apple attribution data via iAd and AdServices APIs
+Fetches apple attribution data via AdServices APIs
 
 ## Requirements
-- iAd Framework
 - AdServices Framework
 
 ## Installation
@@ -17,8 +16,6 @@ npm install @hexigames/react-native-apple-ads-attribution
 ```js
 import AppleAdsAttribution from "@hexigames/react-native-apple-ads-attribution";
 
-const attributionData = await AppleAdsAttribution.getAttributionData();
-const iAdAttributionData = await AppleAdsAttribution.getiAdAttributionData();
 const adServicesAttributionToken = await AppleAdsAttribution.getAdServicesAttributionToken();
 const adServicesAttributionData = await AppleAdsAttribution.getAdServicesAttributionData();
 ```
@@ -30,10 +27,6 @@ Note from version 1.0 the above functions propagates errors, so they should be w
 Gets install attribution data first trying to use the AdServices API (iOS 14.3+).  
 If it fails to retrieve data it will fallback to iAd API.
 Throws error if everything fails
-
-#### getiAdAttributionData()
-Gets install attribution data using iAd API https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution/  
-Throws error if data couldn't be retrieved (e.g. if user rejected permission for app tracking)
 
 ##### Example
 ```javascript
