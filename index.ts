@@ -3,7 +3,14 @@ import { NativeModules, Platform } from "react-native";
 const { AppleAdsAttribution: RNAppleAdsAttribution } = NativeModules;
 
 class AppleAdsAttribution {
-  getAdServicesAttributionToken(): null | Promise<{
+  getAdServicesAttributionToken(): null | Promise<string> {
+    if (Platform.OS !== "ios") {
+      return null;
+    }
+    return RNAppleAdsAttribution.getAdServicesAttributionToken();
+  }
+
+  getAdServicesAttributionData(): null | Promise<{
     attribution: boolean;
     orgId: number;
     campaignId: number;
@@ -14,13 +21,6 @@ class AppleAdsAttribution {
     keywordId: number;
     adId: number;
   }> {
-    if (Platform.OS !== "ios") {
-      return null;
-    }
-    return RNAppleAdsAttribution.getAdServicesAttributionToken();
-  }
-
-  getAdServicesAttributionData(): null | Promise<string> {
     if (Platform.OS !== "ios") {
       return null;
     }
